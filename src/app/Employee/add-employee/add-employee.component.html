@@ -1,0 +1,283 @@
+<!-- <h5>Addons</h5>
+<form (ngSubmit)="add()">
+    <div class="p-col-12 p-md-4 ">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Name">
+        </div>
+    </div>
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="code">
+        </div>
+    </div>
+
+    <h5>Department</h5>
+    <p-dropdown class="p-col-12 p-md-4" (onChange)="ccc()" [options]="profession" [(ngModel)]="professionID"
+        placeholder="Department" optionLabel="name" [showClear]="true"></p-dropdown>
+
+    <h5>Gender</h5>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="gender" value=0 [(ngModel)]="gender" inputId="0"></p-radioButton>
+        <label for="city1">Male</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="gender" value=1 [(ngModel)]="gender" inputId="1"></p-radioButton>
+        <label for="city2">Female</label>
+    </div>
+
+    <h5>Address</h5>
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Address">
+        </div>
+    </div>
+    <h5>Date OF Birth</h5>
+    <div class="p-field p-col-12 p-md-4">
+        <label for="basic">Basic</label>
+        <p-calendar inputId="basic" [(ngModel)]="DOB"></p-calendar>
+    </div>
+
+    <h5>Marital Status</h5>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="MaritalStatus" value=0 [(ngModel)]="MaritalStatus" inputId="0"></p-radioButton>
+        <label for="city1">Single</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="MaritalStatus" value=1 [(ngModel)]="MaritalStatus" inputId="1"></p-radioButton>
+        <label for="city2">Married</label>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <span>year</span>
+        <p-inputMask mask="9999" [(ngModel)]="phone2" placeholder="9999"></p-inputMask>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <span>Phone</span>
+        <p-inputMask mask="(999) 999-9999" [(ngModel)]="phone1" placeholder="(999) 999-9999"></p-inputMask>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <span>Phone</span>
+        <p-inputMask mask="(999) 999-9999" [(ngModel)]="phone2" placeholder="(999) 999-9999"></p-inputMask>
+    </div>
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="email">
+        </div>
+    </div>
+    <h5>Hiring Date</h5>
+    <div class="p-field p-col-12 p-md-4">
+        <label for="basic">Basic</label>
+        <p-calendar inputId="basic" [(ngModel)]="HiringDate"></p-calendar>
+    </div>
+</form>
+
+
+<br>
+<br>
+<br>
+<br> -->
+<!-- <div class="p-fluid">
+    <div class="p-field p-grid">
+        <label for="firstname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Firstname</label>
+        <div class="p-col-12 p-md-10">
+            <input id="firstname" type="text" pInputText style="width: 200px;"> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0" style="margin-left:20px;" >Lastname</label>
+        <div class="p-col-8 p-md-8">
+            <input id="lastname" type="text" pInputText style="width: 400px;"> 
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <label for="firstname6">Firstname</label>
+        <input id="firstname6" type="text" pInputText> 
+    </div>
+    <div class="col-md-6">
+        <label for="firstname6">Firstname</label>
+        <input id="firstname6" type="text" pInputText> 
+    </div>
+</div> -->
+
+<!-- <form #frm="ngForm" (ngSubmit)="add()">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="EmpName">Name</label>
+            <input type="text" #EmpName="ngModel" [class.is-invalid]="EmpName.invalid && EmpName.touched"
+                [class.is-valid]="EmpName.valid" [(ngModel)]="Employee.Name" required minlength="3" name="Name"
+                id="EmpName" class="form-control" placeholder="" aria-describedby="helpId">
+            <small [hidden]="EmpName.valid || EmpName.untouched" id="helpId" class="text-muted">Name must be more than 3
+                letters</small>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="code">Code</label>
+            <input type="text" #code="ngModel" [class.is-invalid]="code.invalid && code.touched"
+                [class.is-valid]="code.valid" [(ngModel)]="Employee.code" required minlength="3" name="code" id="code"
+                class="form-control" placeholder="" aria-describedby="helpId">
+            <small [hidden]="code.valid || code.untouched" id="helpId" class="text-muted">Code must be more than 3
+                letters</small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="profession">Profession</label>
+            <p-dropdown class="col-md-12"  name="profession" [options]="profession" [(ngModel)]="selectedProfession" placeholder="Department"
+                optionLabel="name" [showClear]="true"></p-dropdown>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="gender">Gender</label>{{selectedGender.name}}
+            <p-dropdown class="col-md-12" name="gender" [options]="genderType" optionLabel="name"  [(ngModel)]="selectedGender" placeholder="Select Gender"
+                optionLabel="name" [showClear]="true">
+            </p-dropdown>
+            
+        </div>
+        <div class="form-group col-md-4">
+            <label for="DOB">DOB</label>
+            <input type="date" name="DOB" [(ngModel)]="Employee.DateOfBirth">
+         
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="EmpAddress">Address</label>
+            <input type="text" #EmpAddress="ngModel" [class.is-invalid]="EmpAddress.invalid && EmpAddress.touched"
+                [class.is-valid]="EmpAddress.valid" [(ngModel)]="Employee.Address" required minlength="3"
+                name="EmpAddress" id="EmpName" class="form-control" placeholder="" aria-describedby="helpId">
+            <small [hidden]="EmpAddress.valid || EmpAddress.untouched" id="helpId" class="text-muted"></small>
+        </div>
+        <div class="form-group col-md-4 mstatus">
+            <label for="MaritalStatus">MaritalStatus</label>
+            <p-dropdown  class="col-md-12" name="MaritalStatus" [options]="MaritalStatus" [(ngModel)]="selectedMaritalStatus" 
+            placeholder="MaritalStatus"
+                optionLabel="name" [showClear]="true">
+            </p-dropdown>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="GYear">Graduation Year</label>
+            <input style="width: 70%;" type="number" [(ngModel)]="Employee.GraduatioYear" required min="1980" name="GYear" id=""
+                class="form-control " placeholder="" aria-describedby="helpId">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="phone">Phone </label>
+            <p-inputMask mask="9999999999" name="phone" [(ngModel)]="Employee.Phone" placeholder="999 999 9999"></p-inputMask>
+        </div>
+        <div class="col-md-4">
+            <label for="Rphone">Relevanr Phone </label>
+            <p-inputMask mask="9999999999" name="Rphone" [(ngModel)]="Employee.RelevantPhone" placeholder="999 999 9999"></p-inputMask>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="p-col-12 p-md-4">
+        <label for="email">Email</label>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">www</span>
+                <input type="text" name="email" [(ngModel)]="Employee.Email" pInputText placeholder="Website">      
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="HiringData">Hiring Date</label>
+            <input type="date" name="HiringData" [(ngModel)]="Employee.HiringDate">
+            
+        </div>
+    </div>
+
+    
+    <button type="submit" [disabled]="frm.invalid" class="btn btn-primary">Submit</button>
+</form>
+ -->
+
+<br>
+<div class="container">
+    <h3>New Employee</h3>
+    <br>
+    <form  #frm="ngForm" (ngSubmit)="add()">
+        <div class="form-row">
+            <div class="col-md-6">
+                <input type="text" #EmpName="ngModel" [class.is-invalid]="EmpName.invalid && EmpName.touched"
+                [class.is-valid]="EmpName.valid" [(ngModel)]="Employee.Name" required minlength="3" name="Name"
+                id="EmpName" class="form-control" placeholder="Name" aria-describedby="helpId">
+            <small [hidden]="EmpName.valid || EmpName.untouched" id="helpId" class="text-muted">Name must be more than 3
+                letters</small>
+            </div>
+            <div class="col-md-3">
+                <input type="text" #code="ngModel" [class.is-invalid]="code.invalid && code.touched"
+                [class.is-valid]="code.valid" [(ngModel)]="Employee.code" required minlength="3" name="code" id="code"
+                class="form-control" placeholder="Code" aria-describedby="helpId">
+            <small [hidden]="code.valid || code.untouched" id="helpId" class="text-muted">Code must be more than 3
+                letters</small>
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" placeholder="Date of Birth" name="DOB" [(ngModel)]="Employee.DateOfBirth">
+            </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="col-md-6">
+                <input type="text" #EmpAddress="ngModel" [class.is-invalid]="EmpAddress.invalid && EmpAddress.touched"
+                [class.is-valid]="EmpAddress.valid" [(ngModel)]="Employee.Address" required minlength="3"
+                name="EmpAddress" id="EmpName" class="form-control" placeholder="Address" aria-describedby="helpId">
+            <small [hidden]="EmpAddress.valid || EmpAddress.untouched" id="helpId" class="text-muted"></small>
+            </div>
+            <div class="col-md-3">
+                <input type="number" name="GYear" [(ngModel)]="Employee.GraduatioYear" class="form-control" min="1890" placeholder="Graduation Year">
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" name="HiringData" [(ngModel)]="Employee.HiringDate" placeholder="Hiring Date">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <select [(ngModel)]="Employee.ProfessionID" name="sel2" class="form-control">Profession
+                    <option value="" selected disabled hidden>Profession</option>
+                    <option *ngFor="let item of profession" value="{{item.id}}">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="gender" [(ngModel)]="Employee.gender" class="form-control">
+                    <option selected>Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="Mstatus" [(ngModel)]="Employee.MaritalStatus" class="form-control">
+                    <option selected>Marital Status</option>
+                    <option value="Single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                    <input type="text" class="form-control" name="email" [(ngModel)]="Employee.Email" placeholder="Email">
+               
+            </div>
+            <div class="col-md-3">
+                <input mask="88888" class="form-control" type="text" name="phone" [(ngModel)]="Employee.Phone" placeholder="Phone">
+                
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="Rphone" [(ngModel)]="Employee.RelevantPhone"
+                    placeholder="Relevant Phone">
+            </div>
+        </div>
+        <br>
+        <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary">Add</button>
+    </form>
+</div>
+<br>
