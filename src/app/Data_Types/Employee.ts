@@ -11,4 +11,5 @@ export class Employee {
     RelevantPhone: string;
     Email: string;
     HiringDate: Date;
+    photo:string;
 }

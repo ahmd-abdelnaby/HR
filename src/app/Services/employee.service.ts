@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from '../Data_Types/employee';
+import { map, filter, switchMap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -70,6 +71,15 @@ export class EmployeeService {
       //"Authorization": "bearer " + localStorage.getItem('token')
         })};
     return this.httpclient.put("http://localhost:50652/api/Employees/"+id,emp,httpHeader);
+  }
+
+  postFile(fileToUpload: File): Observable<boolean> {
+    const endpoint = 'http://localhost:50652/api/Employees/api/dashboard/UploadImage';
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    return this.httpclient
+      .post(endpoint, formData).pipe(
+      map(() => { return true; }));
   }
 }
 

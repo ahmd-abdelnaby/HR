@@ -63,6 +63,10 @@
                 <td>
                     {{employee.phone}}
                 </td>
+                <td >
+                    <img src="http://localhost:50652/api/employees/getImage/{{employee.photo}}" style="height: 30%;"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+                 </td>
                 <td>
                     {{employee.gender}}
                 </td>

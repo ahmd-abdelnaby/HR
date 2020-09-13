@@ -276,6 +276,13 @@
                     placeholder="Relevant Phone">
             </div>
         </div>
+        <label class="image-upload-container btn btn-bwm">
+            <span>Select Image</span>
+            <input #imageInput
+                   type="file"
+                   accept="image/*"
+                   (change)="onFileSelected($event.target.files)">
+          </label>
         <br>
         <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary">Add</button>
     </form>
