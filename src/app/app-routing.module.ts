@@ -8,6 +8,7 @@ import { AddEmployeeComponent } from './Employee/add-employee/add-employee.compo
 import { AddProfessionComponent } from './Profession/add-profession/add-profession.component';
 import { DisplayAllEmployeesComponent } from './Employee/display-all-employees/display-all-employees.component';
 import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.component';
+import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
 
 const routes: Routes = [
   {path:'Register' , component:RegisterComponent  },
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'addemployee', component:AddEmployeeComponent },
     { path: 'profession', component:AddProfessionComponent },
     { path: 'editEmployee/:empId', component:EditEmployeeComponent },
+    { path: 'AddExcuse', component:AddExcuseComponent },
    ]},
 ];
 

@@ -1,0 +1,30 @@
+<br>
+<div class="container">
+    <h3>New Excuse</h3>
+    <br>
+    <form (ngSubmit)="add()">
+        <div class="row">
+            <span class="col-md-2" for="time">Date</span>
+            <input name="date" type="date" class="col-md-4 form-control" [(ngModel)]="Excuse.Date" inputId="date">
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-2" for="time"> Time</span>
+            <input name="time" type="time" class="col-md-4 form-control" [(ngModel)]="Excuse.Time" inputId="time">
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-2" for="Hours">Hours</span>
+            <input name="Hours" type="number" min="1" max="2" value="1" class="col-md-4 form-control" [(ngModel)]="Excuse.Hours"
+                inputId="Hours">
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-2" for="Note">Note</span>
+            <textarea name="Note" type="text"  class="col-md-4 form-control" [(ngModel)]="Excuse.Comment"
+                inputId="Note"></textarea>
+        </div>
+        <br>
+        <button id="Add" type="submit"  class="btn btn-primary">Add</button>
+    </form>
+</div>

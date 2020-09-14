@@ -17,7 +17,7 @@ export class AuthService {
 
   login(user:IUser) {
     console.log(user)
-    var data = "username=" +user.username + "&password=" + user.password + "&grant_type=password";
+    var data = "email=" +user.email + "&password=" + user.password + "&grant_type=password";
     var reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': '*/*'

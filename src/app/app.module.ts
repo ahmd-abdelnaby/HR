@@ -35,6 +35,8 @@ import { AddProfessionComponent } from './Profession/add-profession/add-professi
 import { DisplayAllEmployeesComponent } from './Employee/display-all-employees/display-all-employees.component';
 import { from } from 'rxjs';
 import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.component';
+import { AllExcusesComponent } from './Excuse/all-excuses/all-excuses.component';
+import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +53,11 @@ import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.co
     DisplayAllEmployeesComponent,
   
     EditEmployeeComponent,
+  
+    AllExcusesComponent,
+  
+    AddExcuseComponent,
+  
   
 
   ],
