@@ -28,7 +28,7 @@ import {ContextMenuModule} from 'primeng/contextmenu';
 import {DialogModule} from 'primeng/dialog';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
-
+import {AuthGuard} from 'src/app/Guards/auth.guard'
 
 
 import { AddProfessionComponent } from './Profession/add-profession/add-profession.component';
@@ -37,6 +37,7 @@ import { from } from 'rxjs';
 import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.component';
 import { AllExcusesComponent } from './Excuse/all-excuses/all-excuses.component';
 import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
+import { PreviosExcuseComponent } from './Excuse/previos-excuse/previos-excuse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,8 @@ import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
     AllExcusesComponent,
   
     AddExcuseComponent,
+  
+    PreviosExcuseComponent,
   
   
 
@@ -86,7 +89,7 @@ import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
     
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

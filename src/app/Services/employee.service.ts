@@ -68,7 +68,7 @@ export class EmployeeService {
     })};
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      //"Authorization": "bearer " + localStorage.getItem('token')
+      "Authorization": "bearer " + localStorage.getItem('token')
         })};
     return this.httpclient.put("http://localhost:50652/api/Employees/"+id,emp,httpHeader);
   }

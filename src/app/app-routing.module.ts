@@ -9,16 +9,22 @@ import { AddProfessionComponent } from './Profession/add-profession/add-professi
 import { DisplayAllEmployeesComponent } from './Employee/display-all-employees/display-all-employees.component';
 import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.component';
 import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
+import {AuthGuard} from 'src/app/Guards/auth.guard'
+import { from } from 'rxjs';
+import { PreviosExcuseComponent } from './Excuse/previos-excuse/previos-excuse.component';
+import { AllExcusesComponent } from './Excuse/all-excuses/all-excuses.component';
 
 const routes: Routes = [
   {path:'Register' , component:RegisterComponent  },
   {path:'login',component:LoginComponent},
-  {path:'',component:SideNavComponent,children: [
+  {path:'',component:SideNavComponent,canActivate:[AuthGuard],children: [
     { path: 'employee', component:DisplayAllEmployeesComponent },
     { path: 'addemployee', component:AddEmployeeComponent },
     { path: 'profession', component:AddProfessionComponent },
     { path: 'editEmployee/:empId', component:EditEmployeeComponent },
-    { path: 'AddExcuse', component:AddExcuseComponent },
+    { path: 'AddExcuse', component:AddExcuseComponent,canActivate:[AuthGuard] },
+    { path: 'previousExcuse', component:PreviosExcuseComponent,canActivate:[AuthGuard] },
+    { path: 'AllExcuses', component:AllExcusesComponent,canActivate:[AuthGuard] },
    ]},
 ];
 

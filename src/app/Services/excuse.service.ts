@@ -15,15 +15,26 @@ export class ExcuseService {
 
   addExcuse(excuse: Excuse) :Observable<any> {
     console.log(excuse)
-    excuse.email=localStorage.getItem("email");
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Accept': '*/*'
-        //"Authorization": "bearer " + localStorage.getItem('token')
+        'Accept': '*/*',
+        "Authorization": "bearer " + localStorage.getItem('token')
       })
     };
 
     return this.httpclient.post("http://localhost:50652/api/Excuses", excuse, httpOptions);
+  }
+
+  AllExcuses():Observable<any>
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        "Authorization": "bearer " + localStorage.getItem('token')
+      })
+    };
+    return this.httpclient.get("http://localhost:50652/api/Excuses",httpOptions)
   }
 }

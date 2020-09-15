@@ -31,4 +31,8 @@ export class AuthService {
     return this.httpclient.post("http://localhost:50652/api/Authenticate/login", user, httpOptions)
     ;
   }
+  loggedIn()
+  {
+    return !! localStorage.getItem('token');
+  }
 }

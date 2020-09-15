@@ -21,11 +21,14 @@ export class LoginComponent implements OnInit {
   {
     console.log(this.user)
     this.authService.login(this.user).subscribe(
-      data=>{console.log('ggggg'+data['userName']);
+      data=>{console.log(data['userName']);
       localStorage.setItem("token",data['token']);
+      console.log(data['token']);
+      console.log(localStorage.getItem('token'));
+      setTimeout(function(){ 
+        localStorage.removeItem('token');
+      }, 1000); // Will alert once, after a second.
       localStorage.setItem("cuser",data['userName']);
-      console.log(data['id']);
-      localStorage.setItem("email",data['email']);
       this.router.navigate(['/']);},
       error=>console.log(error)
       );
