@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { InnerSubscriber } from 'rxjs/internal/InnerSubscriber';
 import { IUser } from 'src/app/Data_Types/iuser'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { IUser } from 'src/app/Data_Types/iuser'
 export class AuthService {
 
   user: IUser;
-  constructor(private httpclient: HttpClient) {
+  constructor(private httpclient: HttpClient,private router : Router) {
     
   }
 
@@ -34,5 +35,10 @@ export class AuthService {
   loggedIn()
   {
     return !! localStorage.getItem('token');
+  }
+  logout()
+  {
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 }

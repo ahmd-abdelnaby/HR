@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ExcuseService} from 'src/app/Services/excuse.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-previos-excuse',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreviosExcuseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ExcuseService:ExcuseService,private router:Router) { }
 
+  PreviousExcuses:any;
   ngOnInit(): void {
+    this.ExcuseService.PreviousExcuses().subscribe(
+      data=>{this.PreviousExcuses=data},
+      error=>{console.log(error)}
+    );
   }
 
 }

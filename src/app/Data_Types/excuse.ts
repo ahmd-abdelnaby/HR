@@ -5,6 +5,6 @@ export class Excuse {
     Date:Date;
     Time:Time;
     Hours:number;
-    Approved:boolean;
+    Approved:string;
     Comment:string;
 }

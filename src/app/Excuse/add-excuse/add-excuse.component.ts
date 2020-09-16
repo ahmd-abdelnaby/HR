@@ -14,7 +14,7 @@ export class AddExcuseComponent implements OnInit {
 
   Excuse:Excuse
   constructor(private ExcuseService:ExcuseService) {
-     this.Excuse={Approved:false,Date:new Date(Date.now()),Comment:'',Hours:0,Time:{hours:0,minutes:0}};
+     this.Excuse={Approved:"pending",Date:new Date(Date.now()),Comment:'',Hours:0,Time:{hours:0,minutes:0}};
 }
 
   ngOnInit(): void {

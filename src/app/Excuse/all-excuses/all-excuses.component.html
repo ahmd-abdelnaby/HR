@@ -1,41 +1,188 @@
-
-
 <div class="card">
-    <h5>Tooltips</h5>
+    <h5>Excuses</h5>
     <p-tabView>
         <p-tabPanel header="All" leftIcon="pi pi-calendar" tooltip="1972">
-            <p-table  [scrollable]="true" [value]="excuses">
-                <ng-template  pTemplate="header">
+            <p-table scrollHeight="350px" #dt [globalFilterFields]="['employeeName','profession']" [scrollable]="true" [value]="Allexcuses">
+                <ng-template pTemplate="caption">
+                    <div class="table-header">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                placeholder="Global Search" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr style="height: 5px !important; ">
+                        <th>Employee Name</th>
+                        <th>Profession</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Hours</th>
+                        <th>Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-Excuse>
+                    <tr style="height: 5px !important;font-size: 17px;">
+                        <td>{{Excuse.employeeName}}</td>
+                        <td>{{Excuse.profession}}</td>
+                        <td>{{Excuse.date | date :'yyyy-MM-dd'}}</td>
+                        <td>{{Excuse.time}}</td>
+                        <td>{{Excuse.hours}}</td>
+                        <td id="status" *ngIf="Excuse.approved=='approved'">
+                            <div style="cursor:unset;" class="btn btn-success">
+                                {{Excuse.approved}}
+                            </div>
+                        </td>
+                        <td id="status" *ngIf="Excuse.approved=='disapproved'">
+                            <div style="cursor:unset; width: 65%;" class="btn btn-danger">
+                               Rejected
+                            </div>
+                        </td>
+                        <td id="status" *ngIf="Excuse.approved=='pending'">
+                            <div style="cursor:unset;width: 65%;" class="btn btn-secondary">
+                                Passed
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-tabPanel>
+        <p-tabPanel header="Approved" rightIcon="pi pi-inbox" tooltip="1974">
+            <p-table scrollHeight="350px" #dt [globalFilterFields]="['employeeName','profession']" [scrollable]="true"
+                [value]="Approvedexcuses">
+                <ng-template pTemplate="caption">
+                    <div class="table-header">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                placeholder="Global Search" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
                     <tr>
                         <th>Employee Name</th>
                         <th>Profession</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Hours</th>
-                        <th>Approve</th>
+                        <th>Status</th>
                     </tr>
                 </ng-template>
-                <ng-template  pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-Excuse>
                     <tr>
-                        <td>{{product.employeeName}}</td>
-                        <td>{{product.profession}}</td>
-                        <td>{{product.date | date :'yyyy-MM-dd'}}</td>
-                        <td>{{product.time}}</td>
-                        <td>{{product.hours}}</td>
-                        <td>{{product.approved}}</td>
+                        <td>{{Excuse.employeeName}}</td>
+                        <td>{{Excuse.profession}}</td>
+                        <td>{{Excuse.date | date :'yyyy-MM-dd'}}</td>
+                        <td>{{Excuse.time}}</td>
+                        <td>{{Excuse.hours}}</td>
+                        <td id="status" *ngIf="Excuse.approved=='approved'">
+                            <div style="cursor:unset;" class="btn btn-success">
+                                {{Excuse.approved}}
+                            </div>
+                        </td>
+                        <td id="status" *ngIf="Excuse.approved=='disapproved'">
+                            <div style="cursor:unset; width: 65%;" class="btn btn-danger">
+                               Reject
+                            </div>
+                        </td>
+                        <!-- <td *ngIf="Excuse.approved=='pending'" style="color: yellow;">{{Excuse.approved}}</td> -->
+                        <td id="status" *ngIf="Excuse.approved=='pending'">
+                            <div style="cursor:unset;width: 65%;" class="btn btn-warning">
+                                {{Excuse.approved}}
+                            </div>
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>
         </p-tabPanel>
-        <p-tabPanel header="Approved" rightIcon="pi pi-inbox" tooltip="1974">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                    voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
+        <p-tabPanel header="Unapproved" rightIcon="pi pi-star" tooltip="1990">
+            <p-table scrollHeight="350px" #dt [globalFilterFields]="['employeeName','profession']" [scrollable]="true"
+                [value]="DisApprovedexcuses">
+                <ng-template pTemplate="caption">
+                    <div class="table-header">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                placeholder="Global Search" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Profession</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Hours</th>
+                        <th>Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-Excuse>
+                    <tr>
+                        <td>{{Excuse.employeeName}}</td>
+                        <td>{{Excuse.profession}}</td>
+                        <td>{{Excuse.date | date :'yyyy-MM-dd'}}</td>
+                        <td>{{Excuse.time}}</td>
+                        <td>{{Excuse.hours}}</td>
+                        <td id="status" *ngIf="Excuse.approved=='approved'">
+                            <div style="cursor:unset;" class="btn btn-success">
+                                {{Excuse.approved}}
+                            </div>
+                        </td>
+                        <td id="status" *ngIf="Excuse.approved=='disapproved'">
+                            <div style="cursor:unset; width: 65%;" class="btn btn-danger">
+                               Reject
+                            </div>
+                        </td>
+                        <!-- <td *ngIf="Excuse.approved=='pending'" style="color: yellow;">{{Excuse.approved}}</td> -->
+                        <td id="status" *ngIf="Excuse.approved=='pending'">
+                            <div style="cursor:unset;width: 65%;" class="btn btn-warning">
+                                {{Excuse.approved}}
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </p-tabPanel>
-        <p-tabPanel header="Unapproved"  rightIcon="pi pi-star" tooltip="1990">
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+        <p-tabPanel header="Pending" rightIcon="pi pi-inbox" tooltip="1990">
+            <p-table scrollHeight="350px" #dt [globalFilterFields]="['employeeName','profession']" [scrollable]="true"
+                [value]="PendingExcuse">
+                <ng-template pTemplate="caption">
+                    <div class="table-header">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                placeholder="Global Search" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Profession</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Hours</th>
+                        <th>Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-Excuse>
+                    <tr>
+                        <td>{{Excuse.employeeName}}</td>
+                        <td>{{Excuse.profession}}</td>
+                        <td>{{Excuse.date | date :'yyyy-MM-dd'}}</td>
+                        <td>{{Excuse.time}}</td>
+                        <td>{{Excuse.hours}}</td>
+                        <td>
+                            <button (click)="approve(Excuse.id)" class="btn btn-success">O</button>
+                            <button (click)="disapprove(Excuse.id)" style="margin-left: 5%;"
+                                class="btn btn-danger">X</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </p-tabPanel>
     </p-tabView>
-    </div>
+</div>

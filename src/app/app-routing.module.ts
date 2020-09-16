@@ -17,7 +17,7 @@ import { AllExcusesComponent } from './Excuse/all-excuses/all-excuses.component'
 const routes: Routes = [
   {path:'Register' , component:RegisterComponent  },
   {path:'login',component:LoginComponent},
-  {path:'',component:SideNavComponent,canActivate:[AuthGuard],children: [
+  {path:'',component:SideNavComponent,children: [
     { path: 'employee', component:DisplayAllEmployeesComponent },
     { path: 'addemployee', component:AddEmployeeComponent },
     { path: 'profession', component:AddProfessionComponent },

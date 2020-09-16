@@ -13,6 +13,13 @@ export class ExcuseService {
 
   constructor(private httpclient: HttpClient) { }
 
+   httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+      "Authorization": "bearer " + localStorage.getItem('token')
+    })
+  };
   addExcuse(excuse: Excuse) :Observable<any> {
     console.log(excuse)
     const httpOptions = {
@@ -28,13 +35,31 @@ export class ExcuseService {
 
   AllExcuses():Observable<any>
   {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        "Authorization": "bearer " + localStorage.getItem('token')
-      })
-    };
-    return this.httpclient.get("http://localhost:50652/api/Excuses",httpOptions)
+    return this.httpclient.get("http://localhost:50652/api/Excuses",this.httpOptions)
+  }
+
+  ApprovedExcuses():Observable<any>
+  {
+    return this.httpclient.get("http://localhost:50652/api/Excuses/ApprovedExcuses",this.httpOptions)
+  }
+  DisApprovedExcuses():Observable<any>
+  {
+    return this.httpclient.get("http://localhost:50652/api/Excuses/DisApprovedExcuses",this.httpOptions)
+  }
+  PendingExcuses():Observable<any>
+  {
+    return this.httpclient.get("http://localhost:50652/api/Excuses/PendingExcuses",this.httpOptions)
+  }
+  approve(id):Observable<any>
+  {
+    return this.httpclient.get("http://localhost:50652/api/Excuses/AcceptExcuse/"+id,this.httpOptions)
+  }
+  disapprove(id):Observable<any>
+  {
+    return this.httpclient.get("http://localhost:50652/api/Excuses/RejectExcuse/"+id,this.httpOptions)
+  }
+  PreviousExcuses():Observable<any>
+  {
+    return this.httpclient.get("http://localhost:50652/api/Excuses/PreviousExcuses",this.httpOptions)
   }
 }
