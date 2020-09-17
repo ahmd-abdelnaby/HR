@@ -1,5 +1,5 @@
 <div class="card">
-    <h5>Excuses</h5>
+<div style="margin-top: 20px;"><mat-icon style="color: #007bff; margin: 10px; display: inline; ">note_add</mat-icon> <h5 style="display: inline;  font-size: 30px; color: #007bff;">Excuses</h5></div>
     <p-tabView>
         <p-tabPanel header="All" leftIcon="pi pi-calendar" tooltip="1972">
             <p-table scrollHeight="350px" #dt [globalFilterFields]="['employeeName','profession']" [scrollable]="true" [value]="Allexcuses">
@@ -14,9 +14,9 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr style="height: 5px !important; ">
-                        <th>Employee Name</th>
-                        <th>Profession</th>
-                        <th>Date</th>
+                        <th pSortableColumn="employeeName">Employee Name<p-sortIcon field="employeeName"></p-sortIcon></th>
+                        <th pSortableColumn="profession">Profession<p-sortIcon field="profession"></p-sortIcon></th>
+                        <th pSortableColumn="date">Date<p-sortIcon field="code"></p-sortIcon></th>
                         <th>Time</th>
                         <th>Hours</th>
                         <th>Status</th>
@@ -84,7 +84,7 @@
                         </td>
                         <td id="status" *ngIf="Excuse.approved=='disapproved'">
                             <div style="cursor:unset; width: 65%;" class="btn btn-danger">
-                               Reject
+                               Rejected
                             </div>
                         </td>
                         <!-- <td *ngIf="Excuse.approved=='pending'" style="color: yellow;">{{Excuse.approved}}</td> -->
@@ -133,7 +133,7 @@
                         </td>
                         <td id="status" *ngIf="Excuse.approved=='disapproved'">
                             <div style="cursor:unset; width: 65%;" class="btn btn-danger">
-                               Reject
+                               Rejected
                             </div>
                         </td>
                         <!-- <td *ngIf="Excuse.approved=='pending'" style="color: yellow;">{{Excuse.approved}}</td> -->

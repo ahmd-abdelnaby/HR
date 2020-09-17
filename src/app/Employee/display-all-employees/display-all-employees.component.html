@@ -1,87 +1,135 @@
-<p-table class="container card" #dt [value]="Employees" dataKey="id"
-        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers"
-        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">
-        <ng-template pTemplate="caption">
-            <div class="table-header">
-                List of Employees
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
-                </span>
-            </div>
-        </ng-template>
-        <ng-template pTemplate="header">
+<p-table class="container card" #dt [value]="Employees" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+    [globalFilterFields]="['name','country.name','representative.name','status']">
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            <!-- List of Employees -->
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Global Search" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
         <button id="addEmpBtn" routerLink="/addemployee" class="btn btn-primary">add</button>
-            <tr >
-                <th >Name</th>
-                <th>Code</th>
-                <th style="width: 112px; ">Profession</th>
-                <th style="width: 120px; ">Hiring Date</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Gener</th>
-                <th>Marital Status</th>
-                <th>Controls</th>
-            </tr>
-            <tr>
-                <th>
-                    <input  pInputText style="width: 100%;" type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="Name" class="p-column-filter">
-                </th>
-                <th>
-                    <input pInputText type="text" style="width: 100%" (input)="dt.filter($event.target.value, 'code', 'contains')" placeholder="Code" class="p-column-filter">
-                </th>
-                <th>
-                    <input pInputText type="text" style="width: 100%" (input)="dt.filter($event.target.value, 'profession', 'contains')" placeholder="profession" class="p-column-filter">
-                </th>
-                <th>
-                    <p-calendar (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'hiringDateHiringDate', 'equals')" [showButtonBar]="true" styleClass="p-column-filter" placeholder="Hiring Date" [readonlyInput]="true" dateFormat="yy-mm-dd"></p-calendar>
-                </th>
-                <th>
-                    <input  pInputText style="width: 100%;" type="text" (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email" class="p-column-filter">
-                </th>
-                
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-employee>
-            <tr >
-                <td>
-                    {{employee.name}}
-                </td>
-                <td>
-                    {{employee.code}}
-                </td>
-                <td>
-                    {{employee.profession}}
-                </td>
-                <td>
-                    {{employee.hiringDateHiringDate | date :'yyyy-MM-dd'}}
-                </td>
-                <td>
-                    {{employee.email}}
-                </td>
-                <td>
-                    {{employee.phone}}
-                </td>
-                <td >
-                    <img src="http://localhost:50652/api/employees/getImage/{{employee.photo}}" style="height: 30%;"
-                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-                 </td>
-                <td>
-                    {{employee.gender}}
-                </td>
-                <td>
-                    {{employee.maritalStatus}}
-                </td>
-                <td>
-                    <button [routerLink]="['/editEmployee',employee.id]" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                    <button style="display: flex;" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                </td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="6">No customers found.</td>
-            </tr>
-        </ng-template>
-    </p-table>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th style="width: 112px; ">Profession</th>
+            <th style="width: 120px; ">Hiring Date</th>
+            <th>Email</th>
+            <th>Image</th>
+            <!-- <th>Gender</th> -->
+            <!-- <th>Marital Status</th> -->
+            <th>Controls</th>
+        </tr>
+        <tr>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="Name"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'code', 'contains')" placeholder="Code"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'profession', 'contains')" placeholder="profession"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <p-calendar (onSelect)="onDateSelect($event)"
+                    (onClearClick)="dt.filter('', 'hiringDateHiringDate', 'equals')" [showButtonBar]="true"
+                    styleClass="p-column-filter" placeholder="Hiring Date" [readonlyInput]="true" dateFormat="yy-mm-dd">
+                </p-calendar>
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email"
+                    class="p-column-filter">
+            </th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee>
+        <tr>
+            <td>
+                {{employee.name}}
+            </td>
+            <td>
+                {{employee.code}}
+            </td>
+            <td>
+                {{employee.profession}}
+            </td>
+            <td>
+                {{employee.hiringDateHiringDate | date :'yyyy-MM-dd'}}
+            </td>
+            <td>
+                {{employee.email}}
+            </td>
+            <!-- <td>
+                {{employee.phone}}
+            </td> -->
+            <td>
+                <img src="http://localhost:50652/api/employees/getImage/{{employee.photo}}" style="height: 30%;border-radius: 20px;"
+                    alt="">
+            </td>
+            <!-- <td>
+                {{employee.gender}}
+            </td> -->
+            <!-- <td>
+                {{employee.maritalStatus}}
+            </td> -->
+            <td>
+                <div class="row">
+                    <button (click)="showBasicDialog(employee.id)" class="btn btn-success"><i
+                        class="fa fa-eye" aria-hidden="true"></i></button>
+                    <button [routerLink]="['/editEmployee',employee.id]" class="btn btn-primary" style="margin-right: 3px;margin-left: 3px;"><i
+                            class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button style="display: flex;" class="btn btn-danger"><i class="fa fa-trash-o"
+                            aria-hidden="true"></i></button>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="6">No customers found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-dialog header="Employee Details" [(visible)]="displayBasic" [style]="{width: '70vw'}" [baseZIndex]="10000">
+    <div class="row">
+        <div class="col-md-6 form-control"><span class="bold">Name: </span>{{Employee.name}}</div>
+        <br>
+        <div class="col-md-6 form-control"><span class="bold">Email</span>: {{Employee.email}}</div>
+    </div> 
+    <div class="row">
+        <div class="col-md-6 form-control"><span class="bold">Profession: </span>{{Employee.profession}}</div>
+        <br>
+        <div class="col-md-6 form-control"><span class="bold">Code: </span>{{Employee.code}}</div>
+    </div>  
+    <div class="row">
+        <div class="col-md-6 form-control"><span class="bold">Phone: </span>{{Employee.phone}}</div>
+        <div class="col-md-6 form-control"><span class="bold">R-Phone: </span>{{Employee.relevantPhone}}</div>
+    </div>  
+    <div class="row">
+        <div class="col-md-6 form-control"><span class="bold">DOB: </span>{{Employee.dateOfBirth | date :'dd-MM-yyyy'}}</div>
+        <div class="col-md-6 form-control"><span class="bold">Hiring Date: </span>{{Employee.hiringDateHiringDate | date :'dd-MM-yyyy'}}</div>
+    </div>  
+    <div class="row">
+        <div class="col-md-4 form-control"><span class="bold">Gender: </span>{{Employee.gender}}</div>
+        <div class="col-md-4 form-control"><span class="bold">M-Status: </span>{{Employee.maritalStatus}}</div>
+        <div class="col-md-4 form-control"><span class="bold">G-Year: </span>{{Employee.graduatioYear}}</div>
+    </div> 
+    
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" [routerLink]="['/editEmployee',Employee.id]" label="Edit" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="displayBasic=false" label="No"></p-button>
+    </ng-template>
+</p-dialog>

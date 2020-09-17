@@ -1,9 +1,8 @@
-<p-table scrollHeight="350px"  [scrollable]="true" [value]="PreviousExcuses">
-    
+<p-table scrollHeight="350px" [scrollable]="true" [value]="PreviousExcuses">
+
     <ng-template pTemplate="header">
         <tr style="height: 5px !important; ">
-            
-            <th>Date</th>
+            <th pSortableColumn="date">Date<p-sortIcon field="code"></p-sortIcon> </th>
             <th>Time</th>
             <th>Hours</th>
             <th>Status</th>
@@ -11,18 +10,18 @@
     </ng-template>
     <ng-template pTemplate="body" let-Excuse>
         <tr style="height: 5px !important;font-size: 17px;">
-          
+
             <td>{{Excuse.date | date :'yyyy-MM-dd'}}</td>
             <td>{{Excuse.time}}</td>
             <td>{{Excuse.hours}}</td>
             <td id="status" *ngIf="Excuse.approved=='approved'">
-                <div style="cursor:unset;width: 50%;"  class="btn btn-success">
+                <div style="cursor:unset;width: 50%;" class="btn btn-success">
                     {{Excuse.approved}}
                 </div>
             </td>
             <td id="status" *ngIf="Excuse.approved=='disapproved'">
                 <div style="cursor:unset; width: 50%;" class="btn btn-danger">
-                   Rejected
+                    Rejected
                 </div>
             </td>
             <td id="status" *ngIf="Excuse.approved=='pending'">

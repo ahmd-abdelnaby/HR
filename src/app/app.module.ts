@@ -30,7 +30,6 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
 import {AuthGuard} from 'src/app/Guards/auth.guard'
 
-
 import { AddProfessionComponent } from './Profession/add-profession/add-profession.component';
 import { DisplayAllEmployeesComponent } from './Employee/display-all-employees/display-all-employees.component';
 import { from } from 'rxjs';
@@ -38,6 +37,10 @@ import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.co
 import { AllExcusesComponent } from './Excuse/all-excuses/all-excuses.component';
 import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
 import { PreviosExcuseComponent } from './Excuse/previos-excuse/previos-excuse.component';
+// import { IconImportModule } from 'mat-icon-import';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,9 +88,10 @@ import { PreviosExcuseComponent } from './Excuse/previos-excuse/previos-excuse.c
     MultiSelectModule,
     ContextMenuModule,
     DialogModule,
-    ProgressBarModule
-    
-
+    ProgressBarModule,
+    // IconImportModule,
+    MatSliderModule,
+    MatIconModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

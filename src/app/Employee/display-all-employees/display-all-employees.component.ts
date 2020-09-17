@@ -19,28 +19,23 @@ export class DisplayAllEmployeesComponent implements OnInit {
 
     //Employees: any;
 
-    Employee : Employee;
+    Employee : any;
 
     selectedProducts: Employee[];
 
     submitted: boolean;
   representatives: { name: string; image: string; }[];
 
-    constructor(private EmployeeService: EmployeeService,private router:Router) { }
+    constructor(private EmployeeService: EmployeeService,private router:Router) { 
+        this.Employee={Address:'',DateOfBirth:new Date(2018, 0O5, 0O5, 17, 23, 42, 11),Email:'',GraduatioYear:''
+      ,HiringDate:new Date(2018, 0O5, 0O5, 17, 23, 42, 11),MaritalStatus:'Marital Status',Name:'',
+    Phone:'',ProfessionID:0,RelevantPhone:'',code:'',gender:'Gender'};
+    }
 
-    // ngOnInit() {
-    //     this.EmployeeService.GetAllEmployees().subscribe(
-    //       (res)=>{this.Employees=res;},
-    //      (err)=>{console.log(err)}
-    //      );
-
-    // }
     Employees: any;
-
-   // representatives: Representative[];
-
+  
     statuses: any[];
-
+    displayBasic: boolean;
     loading: boolean = true;
 
     @ViewChild('dt') table: Table;
@@ -116,6 +111,16 @@ export class DisplayAllEmployeesComponent implements OnInit {
     {
         this.router.navigate(['/editEmployee',id]);
         alert(id);
+    }
+    
+
+    showBasicDialog(id) {
+        this.displayBasic = true;
+        this.EmployeeService.GetEmployee(id).subscribe(
+            data=>{this.Employee=data,console.log(data)},
+            error=>{console.log(error)}
+        )
+        
     }
 
 }

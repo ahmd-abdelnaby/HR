@@ -220,7 +220,7 @@
                  letters</small>
              </div>
              <div class="col-md-3">
-                 <input type="date" class="form-control" placeholder="Date of Birth" name="DOB" [(ngModel)]="Employee.DateOfBirth">
+                 <input type="date" formaction="mm-dd-yyyy" class="form-control" placeholder="Date of Birth" value="2011-09-29" name="DOB" [(ngModel)]="Employee.DateOfBirth">
              </div>
          </div>
          <br>
@@ -265,11 +265,9 @@
          <div class="row">
              <div class="col-md-6">
                      <input type="text" class="form-control" name="email" [(ngModel)]="Employee.email" placeholder="Email">
-                
              </div>
              <div class="col-md-3">
                  <input mask="88888" class="form-control" type="text" name="phone" [(ngModel)]="Employee.phone" placeholder="Phone">
-                 
              </div>
              <div class="col-md-3">
                  <input class="form-control" type="text" name="Rphone" [(ngModel)]="Employee.relevantPhone"

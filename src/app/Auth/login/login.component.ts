@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user:IUser;
+  roles:any;
   constructor(private authService: AuthService,private router : Router) { 
     this.user = { email: '', username: '', password: '' }
   }
@@ -23,8 +24,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).subscribe(
       data=>{console.log(data['userName']);
       localStorage.setItem("token",data['token']);
+      localStorage.setItem("roles",data['roles']);
       console.log(data['token']);
-      console.log(localStorage.getItem('token'));
+      console.log(localStorage.getItem('roles'));
       // setTimeout(function(){ 
       //   localStorage.removeItem('token');
       // }, 1000); // Will alert once, after a second.
