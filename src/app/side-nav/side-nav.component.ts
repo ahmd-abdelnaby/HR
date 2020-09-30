@@ -7,10 +7,12 @@ import { AuthService } from '../Services/auth.service';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
+  
 
   constructor(private AuthService:AuthService) { }
   userName=localStorage.getItem("cuser")
   ngOnInit(): void {
+    
   }
 
   logout()

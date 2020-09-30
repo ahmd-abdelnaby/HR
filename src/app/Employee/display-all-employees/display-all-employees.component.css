@@ -1,4 +1,4 @@
-#addEmpBtn
+/* #addEmpBtn
 {
     margin-top: 20%;
     width: 10vw;
@@ -6,4 +6,41 @@
 .bold
 {
     font-weight: bold;
+}
+:host >>>  .ng-star-inserted {
+  height: 1px !important;
+  width: auto;
+  height: auto;
+  min-height: 20vh;
+}
+:host >>>  ng-template tr{
+   margin: 0%;
+   
+   background-color: black;
+   padding: 0.5rem -0.5rem;
+  }
+
+  :host >>> .p-datatable .p-datatable-tbody > tr  {
+    text-align: left;
+    border: 1px solid #e9ecef;
+    border-width: 0 0 1px 0;
+    padding: 5px 5px;
+} */
+
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: left;
+  border: 1px solid #e9ecef;
+  border-width: 0 0 1px 0;
+  padding:1px 1px !important;
+}
+
+.c-btn
+{
+    display: flex;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    height: 27px;
+    margin-left: 2%;
 }

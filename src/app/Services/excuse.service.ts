@@ -38,6 +38,14 @@ export class ExcuseService {
     return this.httpclient.get("http://localhost:50652/api/Excuses",this.httpOptions)
   }
 
+  getexcuseByID(id):Observable<any>
+  {
+    return this.httpclient.get("http://localhost:50652/api/Excuses/"+id,this.httpOptions)
+  }
+  Update(Excuse,id):Observable<any>
+  {
+    return this.httpclient.put("http://localhost:50652/api/Excuses/"+id,Excuse,this.httpOptions)
+  }
   ApprovedExcuses():Observable<any>
   {
     return this.httpclient.get("http://localhost:50652/api/Excuses/ApprovedExcuses",this.httpOptions)
@@ -61,5 +69,9 @@ export class ExcuseService {
   PreviousExcuses():Observable<any>
   {
     return this.httpclient.get("http://localhost:50652/api/Excuses/PreviousExcuses",this.httpOptions)
+  }
+  delete(id):Observable<any>
+  {
+    return this.httpclient.delete("http://localhost:50652/api/Excuses/"+id,this.httpOptions)
   }
 }

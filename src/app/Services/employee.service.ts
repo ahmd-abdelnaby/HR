@@ -54,11 +54,11 @@ export class EmployeeService {
   {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      //"Authorization": "bearer " + localStorage.getItem('token')
+      "Authorization": "bearer " + localStorage.getItem('token')
         })};
     return this.httpclient.get<Employee>("http://localhost:50652/api/Employees/"+id,httpOptions);
   }
-  UpdateEmployee(id,emp:Employee)
+  UpdateEmployee(id,emp)
   {
     //console.log(emp);
     const httpHeader={headers: new HttpHeaders({
@@ -80,6 +80,31 @@ export class EmployeeService {
     return this.httpclient
       .post(endpoint, formData).pipe(
       map(() => { return true; }));
+  }
+
+  EmployeeByProfession()
+  {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": "bearer " + localStorage.getItem('token')
+        })};
+    return this.httpclient.get("http://localhost:50652/api/Employees/EmployeeByProfession",httpOptions);
+  }
+  GetAllEmployeesByProfession(id)
+  {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": "bearer " + localStorage.getItem('token')
+        })};
+    return this.httpclient.get("http://localhost:50652/api/Employees/GetAllEmployeesByProfession/"+id,this.httpHeader);
+  }
+  delete(id)
+  {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": "bearer " + localStorage.getItem('token')
+        })};
+    return this.httpclient.delete("http://localhost:50652/api/Employees/"+id,this.httpHeader);
   }
 }
 

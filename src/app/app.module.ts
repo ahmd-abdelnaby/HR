@@ -11,7 +11,7 @@ import { RegisterComponent } from './Auth/register/register.component';
 import { Child1Component } from './main/child1/child1.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from  '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from  '@angular/common/http';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {CheckboxModule} from 'primeng/checkbox';
@@ -29,7 +29,6 @@ import {DialogModule} from 'primeng/dialog';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
 import {AuthGuard} from 'src/app/Guards/auth.guard'
-
 import { AddProfessionComponent } from './Profession/add-profession/add-profession.component';
 import { DisplayAllEmployeesComponent } from './Employee/display-all-employees/display-all-employees.component';
 import { from } from 'rxjs';
@@ -37,9 +36,18 @@ import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.co
 import { AllExcusesComponent } from './Excuse/all-excuses/all-excuses.component';
 import { AddExcuseComponent } from './Excuse/add-excuse/add-excuse.component';
 import { PreviosExcuseComponent } from './Excuse/previos-excuse/previos-excuse.component';
-// import { IconImportModule } from 'mat-icon-import';
+import { ErrorInterceptor } from '../app/Data_Types/error.interceptor';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
+import { AddLeaveComponent } from './Leaves/add-leave/add-leave.component';
+import { AllLeavesComponent } from './Leaves/all-leaves/all-leaves.component';
+import { PreviousLeavesComponent } from './Leaves/previous-leaves/previous-leaves.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ToolbarModule} from 'primeng/toolbar';
+import { MessageService } from 'primeng/api';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+
 
 @NgModule({
   declarations: [
@@ -50,21 +58,16 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     RegisterComponent,
     Child1Component,
-    AddEmployeeComponent,
-  
-    AddProfessionComponent,
-  
-    DisplayAllEmployeesComponent,
-  
-    EditEmployeeComponent,
-  
-    AllExcusesComponent,
-  
-    AddExcuseComponent,
-  
-    PreviosExcuseComponent,
-  
-  
+    AddEmployeeComponent, 
+    AddProfessionComponent, 
+    DisplayAllEmployeesComponent, 
+    EditEmployeeComponent, 
+    AllExcusesComponent,  
+    AddExcuseComponent, 
+    PreviosExcuseComponent,  
+    AddLeaveComponent,  
+    AllLeavesComponent,  
+    PreviousLeavesComponent,
 
   ],
   imports: [
@@ -89,11 +92,14 @@ import { MatIconModule } from '@angular/material/icon';
     ContextMenuModule,
     DialogModule,
     ProgressBarModule,
-    // IconImportModule,
+    FileUploadModule,
+    ToolbarModule,
+    ToastModule,
     MatSliderModule,
-    MatIconModule
+    MatIconModule,
+    ConfirmDialogModule,
   ],
-  providers: [AuthGuard],
+  providers: [ConfirmationService,MessageService,AuthGuard,{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

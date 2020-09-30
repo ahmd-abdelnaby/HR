@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from 'src/app/Services/auth.service'
 import { IUser } from 'src/app/Data_Types/iuser';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,11 +27,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("token",data['token']);
       localStorage.setItem("roles",data['roles']);
       console.log(data['token']);
+
+      
       console.log(localStorage.getItem('roles'));
-      // setTimeout(function(){ 
-      //   localStorage.removeItem('token');
-      // }, 1000); // Will alert once, after a second.
-      //localStorage.setItem("cuser",data['userName']);
       this.router.navigate(['/']);},
       error=>console.log(error)
       );

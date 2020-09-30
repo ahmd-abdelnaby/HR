@@ -276,13 +276,18 @@
                     placeholder="Relevant Phone">
             </div>
         </div>
-        <label class="image-upload-container btn btn-bwm">
-            <span>Select Image</span>
-            <input #imageInput
-                   type="file"
-                   accept="image/*"
-                   (change)="onFileSelected($event.target.files)">
-          </label>
+        <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input 
+              accept="image/*"
+              (change)="onFileSelected($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+              <label  class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
         <br>
         <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary">Add</button>
     </form>
